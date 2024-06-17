@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/background.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #logo2 {
+            animation: spin 2s linear infinite;
+            height: 150px;
+            width: 150px;
+            margin-top: 20px;
+        }
+        #powered-by {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #continue-btn {
+            display: none;
+            margin-top: 20px;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .header-text {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-text">Gardant Security Event Log</div>
+    <img id="logo2" src="/static/logo2.png" alt="Loading...">
+    <div id="powered-by">
+        <img src="/static/logo1.png" alt="Powered by Virtulum" style="height: 50px;">
+        <p>Powered by Virtulum</p>
+    </div>
+    <button id="continue-btn" class="ui blue button">Continue</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('logo2').style.animation = 'none';
+                document.getElementById('logo2').style.transform = 'rotate(0deg)';
+                document.getElementById('powered-by').style.display = 'block';
+                document.getElementById('continue-btn').style.display = 'block';
+            }, 3000); // Adjust time as needed
+
+            document.getElementById('continue-btn').addEventListener('click', function() {
+                window.location.href = '/index';
+            });
+        });
+    </script>
+</body>
+</html>

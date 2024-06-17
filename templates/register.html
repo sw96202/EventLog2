@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 100px;
+            text-align: center;
+        }
+        .logo {
+            height: 50px;
+        }
+        .form-container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui container">
+        <div class="header">
+            <img src="/static/logo1.png" class="logo">
+            <h1 class="ui header">Register New User</h1>
+            <img src="/static/logo2.png" class="logo">
+        </div>
+        <div class="form-container">
+            <form class="ui form" action="/register" method="post">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="field">
+                    <label for="pin">PIN</label>
+                    <input type="password" id="pin" name="pin" required>
+                </div>
+                <button class="ui blue button" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

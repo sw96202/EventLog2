@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Select Event{% endblock %}
+
+{% block content %}
+<h1 class="ui header">Select Event</h1>
+<form class="ui form" action="/select_event" method="post">
+    <div class="field">
+        <label for="event">Event</label>
+        <select id="event" name="event" required>
+            {% for event in event_list %}
+            <option value="{{ event[0] }}">{{ event[1] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="ui blue button" type="submit">Select Event</button>
+</form>
+{% endblock %}

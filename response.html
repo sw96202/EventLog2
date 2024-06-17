@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<script src="/Scripts_bundles?v=a9CklJMAgduHs27d7OE65QLypcBYm6doi_lMZ8Metc01">
+</script>
+<script src="/js_bundles?v=Aw6GS5GW2gu-SJYY-7ul87nX0PYMg4sQCELrVNrrEy41">
+</script>
+<link href="/css_bundles?v=oeWiAabVeOEpJz8hXikMxlOiLXBuGyvMfP1i7PSmpWg1" rel="stylesheet"/>
+<style type="text/css">
+ .well {
+        box-shadow: none;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .panel {
+        box-shadow: none;
+        border-radius: 0;
+        width: 1150px;
+    }
+
+    .cookie-banner {
+        font-family: "GDS Transport",arial,sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 400;
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 1.25;
+        padding-top: 20px;
+        border-bottom: 2px solid transparent;
+        background-color: #ffffff;
+        border-top-color: #00558c;
+        border-bottom-color: #00558c;
+        border-top-style: solid;
+        padding: 5px 0px 5px 0px
+    }
+</style>
+<div>
+ <div class="container">
+  <div class="cookie-banner" id="cookieBanner" style="display:none;">
+   <div>
+    <p>
+     <span style="font-family: Arial; font-size: medium;">
+      <span style="font-family: Arial; font-size: medium;">
+       We use a session cookie to protect the security of this service and your data. Read more about the
+      </span>
+     </span>
+     <a onclick="SeeMoreCookiesWeUseClick()">
+      <span style="text-decoration: underline;">
+       <span style="font-family: Calibri; font-size: medium;">
+        <span style="font-family: Arial; font-size: medium; font-weight: bold;cursor: pointer;">
+         cookies we use
+        </span>
+       </span>
+      </span>
+     </a>
+     <span style="font-family: Calibri; font-size: medium;">
+      <span style="font-family: Arial; font-size: medium;">
+       .
+      </span>
+     </span>
+    </p>
+   </div>
+   <div>
+    <input class="btn btn-primary" id="AcceptCookies" onclick="AcceptCookies();" type="button" value="Accept Cookies"/>
+    <input class="btn btn-primary" id="RejectCookies" onclick="RejectCookies();" type="button" value="Reject Cookies"/>
+   </div>
+  </div>
+  <div class="cookie-banner" id="cookieBannerOnReject" style="display:none;">
+   <div>
+    <p>
+     <span style="font-family: Arial; font-size: medium;">
+      <span style="font-family: Arial; font-size: medium;">
+       You have clicked on Reject Cookies.We use a session cookie to protect the security of this service and your data. Read more about the
+      </span>
+     </span>
+     <a onclick="SeeMoreCookiesWeUseClick()">
+      <span style="text-decoration: underline;">
+       <span style="font-family: Calibri; font-size: medium;">
+        <span style="font-family: Arial; font-size: medium; font-weight: bold;cursor: pointer;">
+         cookies we use
+        </span>
+       </span>
+      </span>
+     </a>
+     <span style="font-family: Calibri; font-size: medium;">
+      <span style="font-family: Arial; font-size: medium;">
+       .
+      </span>
+     </span>
+    </p>
+   </div>
+   <div>
+    <input class="btn btn-primary" id="Accep_Cookies" onclick="AcceptCookies();" type="button" value="Accept Cookies"/>
+   </div>
+  </div>
+  <div class="cookie-banner" id="cookieBannerAcceptOrReject" style="display:none;position:relative;min-height:20px">
+   <div class="accordion-heading" id="lnkToggleCollapse" style="top:0;right:0;position:absolute;">
+    <a class="accordion-toggle" data-parent="#accordion2" data-toggle="collapse" href="#collapsibleDiv" onclick="open_fun()" style="font-size:small">
+     Collapse
+    </a>
+   </div>
+   <div class="accordion-body collapse in" id="collapsibleDiv">
+    <div>
+     <span>
+      <span style="font-family: Arial; font-size: small;">
+       <span style="font-family: Arial; font-size: small;">
+        Read more about the
+       </span>
+      </span>
+      <a onclick="SeeMoreCookiesWeUseClick()">
+       <span style="text-decoration: underline;cursor: pointer;">
+        <span style="font-family: Arial; font-size: small;">
+         <span style="font-family: Arial; font-size: small; font-weight: bold;">
+          cookies we use
+         </span>
+        </span>
+       </span>
+      </a>
+      <span style="font-family: Arial; font-size: small;">
+       <span style="font-family: Arial; font-size: small;">
+        .
+       </span>
+      </span>
+     </span>
+     <input class="btn btn-primary" id="RejectAcceptedCookies" onclick="RejectAcceptedCookies();" style="font-size:10px;padding:3px 6px 3px 6px;" type="button" value="Reject Cookies"/>
+    </div>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-4">
+    <div class="btn-group" style="margin-top: 10px;">
+     <a href="https://www.gov.uk/government/organisations/security-industry-authority" target="_blank">
+      SIA Website
+     </a>
+     |
+     <a href=" https://www.services.sia.homeoffice.gov.uk/Pages/contact-form.aspx" target="_blank">
+      Contact Us
+     </a>
+    </div>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-8 pull-right">
+    <img alt="" class="pull-right header_logo" src="/Images/SIA_Logo.png"/>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-md-8">
+    <div class="ax_horizontal_line">
+     <img src="/Images/horizontal_line.png" style="width: 1150px;"/>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="modal-dialog modal-md" id="panelCookiesWeUseOverlay" style="display:none">
+  <div class="modal-content" id="PanelDetailDeclaration" runat="server">
+   <div class="modal-header">
+    <a class="close" onclick="PopUpCloseCookiesWeUseClick()" runat="server" title="Close">
+     X
+    </a>
+    <h2 class="model-title">
+     <asp:label runat="server">
+      Cookies we use
+     </asp:label>
+    </h2>
+   </div>
+   <div class="modal-body">
+    <div class="pre-scrollable" id="divMid">
+     <span class="text-muted-line">
+      <asp:label runat="server">
+       <p style="font-family : Arial; font-size : 14px;font-weight : normal;color: #333;word-wrap: break-word">
+        Cookies are small text files that are placed on your computer by websites that you visit. They are used to make websites work more efficiently, as well as to provide information to the owners of the site.
+       </p>
+       <p style="font-family : Arial; font-size : 14px;font-weight : normal;color: #333;word-wrap: break-word">
+        To find out more about cookies, including how to see what cookies have been set and how to manage and delete them, visit
+        <a class="govuk-link" href="https://www.allaboutcookies.org/" target="_blank">
+         www.allaboutcookies.org
+        </a>
+        .
+       </p>
+       <p style="font-family : Arial; font-size : 14px;font-weight : normal;color: #333;word-wrap: break-word">
+        We use cookies for online services such as our licensing site, our criminal record indicator or the search for a training provider tool.
+       </p>
+       <p style="font-family : Arial; font-size : 14px;font-weight : normal;color: #333;word-wrap: break-word">
+        The table below explain the cookies we use and why.
+       </p>
+       <p>
+       </p>
+       <table style="height: 261px; border: 1px solid black;font-family : Arial; font-size : 14px;font-weight : normal;color: #333" width="530">
+        <tbody>
+         <tr style="border: 1px solid black;">
+          <td style="border: 1px solid black;">
+           <strong>
+            Cookie
+           </strong>
+          </td>
+          <td style="border: 1px solid black;">
+           <strong>
+            Name
+           </strong>
+          </td>
+          <td style="border: 1px solid black;">
+           <strong>
+            Purpose
+           </strong>
+          </td>
+          <td style="border: 1px solid black;">
+           <strong>
+            Expires
+           </strong>
+          </td>
+         </tr>
+         <tr>
+          <td style="border: 1px solid black;">
+           <strong>
+            Session cookie
+           </strong>
+          </td>
+          <td style="border: 1px solid black;">
+           cookiesession1
+          </td>
+          <td style="border: 1px solid black;;word-wrap: break-word">
+           This cookie is used by our licensing portal to protect the security of the service and your data. It is used by our firewall to monitor your session looking for abnormalities that could indicate an attack. It is functional cookie and is not used for any statistical, social, targeting or commercial purposes.
+          </td>
+          <td>
+           When you close your browser
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <p>
+       </p>
+      </asp:label>
+     </span>
+    </div>
+   </div>
+   <div class="modal-footer">
+    <a class="btn btn-secondary" onclick="PopUpCloseCookiesWeUseClick()" runat="server" title="Close">
+     Close
+    </a>
+   </div>
+  </div>
+ </div>
+ <div class="voffset2">
+ </div>
+ <div class="container">
+  <div class="ax_h1">
+   Register of Licence Holders
+  </div>
+  <div>
+   Once a licence has been issued, details about the licence holder are held on a register and made available to the public. Establishing and maintaining a register is required under
+   <a href="https://www.legislation.gov.uk/ukpga/2001/12/section/12" target="_blank">
+    section 12 of the Private Security Industry Act
+    <span aria-hidden="true" class="glyphicon glyphicon-new-window">
+    </span>
+   </a>
+   You will be able to search the register on the date of birth field if known to you, but this information will not be made available from any result which is obtained. Where a result is obtained from entering the date of birth, it can be taken as confirmation that the date entered is correct.The address of an individual will not be made public
+  </div>
+  <div class="ax_horizontal_line">
+   <img alt="u50_line" class="img" id="u50_line" src="/Images/horizontal_line.png" style="width: 1150px;"/>
+  </div>
+  <div class="voffset3">
+  </div>
+  <div class="ax_h2">
+   Search for licence
+  </div>
+  <div class="voffset3">
+  </div>
+  <span class="asterisk">
+   *
+  </span>
+ </div>
+ <div class="container voffset4">
+  <div class="row">
+   <form action="/PublicRegister/SearchPublicRegisterBySurname" method="post">
+    <div class="col-md-5">
+     <div class="form-group">
+      <div class="ax_h3">
+       Find by name
+      </div>
+     </div>
+     <div class="form-group required">
+      <span class="control-label ax_h4">
+       Surname
+      </span>
+      <div class="helptext">
+       This is ideally the second name displayed on the licence badge.
+      </div>
+      <span class="field-validation-valid help-inline" data-valmsg-for="Surname" data-valmsg-replace="true" style="color:red">
+      </span>
+      <input class="form-control" id="Surname" name="Surname" size="20" type="text" value=""/>
+     </div>
+     <div class="form-group">
+      <span class="ax_h4">
+       First name
+      </span>
+      <div class="helptext">
+       This is ideally the first name/initial displayed on the licence badge
+      </div>
+      <input class="text form-control" id="FirstName" name="FirstName" size="20" type="text" value=""/>
+     </div>
+     <div class="form-group">
+      <span class="ax_h4">
+       Middle name
+      </span>
+      <div class="helptext">
+      </div>
+      <input class="text form-control" id="MiddleName" name="MiddleName" size="20" type="text" value=""/>
+     </div>
+     <div class="form-group">
+      <span class="ax_h4">
+       Date of birth
+      </span>
+      <div class="helptext">
+       Expected format DD/MM/YYYY. eg: 01/08/1960
+      </div>
+      <span class="field-validation-valid help-inline" data-valmsg-for="DateOfBirth" data-valmsg-replace="true" style="color:red">
+      </span>
+      <div class="date">
+       <div class="input-group input-append date" id="datePicker">
+        <input class="text form-control" data-val="true" data-val-date="The field DateOfBirth must be a date." id="DateOfBirth" name="DateOfBirth" size="20" type="text" value=""/>
+        <span class="input-group-addon add-on" style="cursor:pointer">
+         <span class="glyphicon glyphicon-calendar">
+         </span>
+        </span>
+       </div>
+      </div>
+     </div>
+     <div class="form-group">
+      <span class="ax_h4">
+       Role
+      </span>
+      <div class="helptext">
+       Please select a value from the dropdown
+      </div>
+      <select class="text form-control" id="selectRole" name="Role">
+       <option value="">
+        Select Role
+       </option>
+       <option value="Front Line">
+        Front Line
+       </option>
+       <option value="Non Front Line">
+        Non Front Line
+       </option>
+      </select>
+     </div>
+     <div class="form-group">
+      <span class="ax_h4">
+       Licence sector
+      </span>
+      <div class="helptext">
+       Please select a value from the dropdown
+      </div>
+      <select class="text form-control" id="selectLicenceSector" name="LicenseSector">
+       <option value="">
+        Select Licence Sector
+       </option>
+       <option value="Key Holding">
+        Key Holding
+       </option>
+       <option value="Security Guarding">
+        Security Guarding
+       </option>
+       <option value="Door Supervision">
+        Door Supervision
+       </option>
+       <option value="Public Space Surveillance (CCTV)">
+        Public Space Surveillance (CCTV)
+       </option>
+       <option value="Cash and Valuables in Transit">
+        Cash and Valuables in Transit
+       </option>
+       <option value="Vehicle Immobilisation">
+        Vehicle Immobilisation
+       </option>
+       <option value="Close Protection">
+        Close Protection
+       </option>
+      </select>
+     </div>
+     <div class="form-group">
+      <input class="btn btn-primary btn_search" type="submit" value="Search"/>
+     </div>
+    </div>
+   </form>
+   <div class="ax_vertical_line col-sm-1">
+    <div class="form-group msg-or">
+     -OR-
+    </div>
+    <img alt="u65_line" class="img" id="u65_line" src="/Images/u65_line.png">
+    </img>
+   </div>
+   <form action="/PublicRegister/SearchPublicRegisterByLicence" method="post">
+    <div class="col-md-5">
+     <div class="form-group">
+      <div class="ax_h3">
+       Find by licence number
+      </div>
+     </div>
+     <div class="form-group required">
+      <span class="control-label ax_h4">
+       Licence number
+      </span>
+      <div class="helptext">
+       This is a 16 digit number. Please enter the number with no spaces
+      </div>
+      <span class="field-validation-valid help-inline" data-valmsg-for="LicenseNo" data-valmsg-replace="true" style="color:red">
+      </span>
+      <input class="text form-control" data-val="true" data-val-regex="Please enter numeric value for licence number." data-val-regex-pattern="^\d+$" id="LicenseNo" name="LicenseNo" size="16" type="text" value="1006822567401004"/>
+     </div>
+     <div class="form-group">
+      <input class="btn btn-primary btn_search" type="submit" value="Search"/>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+ <div class="container voffset4">
+  <div class="ax_h2">
+   Search Results - 1 licence found
+  </div>
+ </div>
+ <input id="hiddenResultCount" type="hidden" value="1"/>
+ <div class="ax_horizontal_line">
+  <img alt="u50_line" class="img" id="u50_line" src="/Images/horizontal_line.png" style="width: 1150px;"/>
+ </div>
+ <div class="voffset3">
+ </div>
+ <div class="container well panel panel-default">
+  <div class="panel-body">
+   <div class="row">
+    <div class="col-md-3">
+     <span class="ax_paragraph">
+      First name
+     </span>
+     <div class="form-group">
+      <div class="ax_h5">
+       SEAN
+      </div>
+     </div>
+    </div>
+    <div class="col-md-3">
+     <span class="ax_paragraph">
+      Surname
+     </span>
+     <div class="form-group">
+      <div class="ax_h5">
+       WATSON
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-3">
+     <span class="ax_paragraph">
+      Licence number
+     </span>
+     <div class="form-group">
+      <div class="ax_h4">
+       1006822567401004
+      </div>
+     </div>
+    </div>
+    <div class="col-md-3">
+     <span class="ax_paragraph">
+      Role
+     </span>
+     <div class="form-group">
+      <div class="ax_h4">
+       Non Front Line
+      </div>
+     </div>
+    </div>
+    <div class="col-md-3">
+     <span class="ax_paragraph">
+      Licence sector
+     </span>
+     <div class="form-group">
+      <div class="ax_h4">
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-3">
+     <span class="ax_paragraph">
+      Expiry date
+     </span>
+     <div class="form-group">
+      <div class="ax_h4">
+       13 December 2024
+      </div>
+     </div>
+    </div>
+    <div class="col-md-3">
+     <span class="ax_paragraph">
+      Status
+     </span>
+     <div class="form-group">
+      <span class="ax_h4_green">
+       Active
+      </span>
+      <span class="as-on-date">
+       (as on 14 December 2021)
+      </span>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-11">
+     <div class="ax_paragraph">
+      Status explanation
+     </div>
+     <div class="text form-group" style="margin-top:5px;">
+      <span class="italic_13">
+       Active -
+      </span>
+      <span class="normal_13">
+      </span>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-11">
+     <div class="ax_paragraph">
+      Additional licence conditions
+     </div>
+     <div class="text form-group" style="margin-top:6px;">
+      <span>
+       -
+      </span>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="footer">
+ <div class="container" style="padding:0;">
+  <div class="xrm-editable-html xrm-attribute">
+   <div class="xrm-attribute-value">
+    <hr style="border-bottom: none; border-color: #f1f1f1; margin-bottom: 10px;"/>
+    <div style="margin-bottom: 10px; margin-top: 10px;">
+     <a href="http://www.gov.uk/government/publications/sia-privacy-policy" target="_blank">
+      Privacy Policy
+     </a>
+     |
+     <a href="https://www.gov.uk/government/publications/sia-online-services-accessibility-statements" target="_blank">
+      Accessibility Statement
+     </a>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<script type="text/javascript">
+ $(document).ready(function () {
+        $(document).keyup(function (e) {
+            if (e.keyCode == 27) { $(".Overlay").hide(); $(".PopUpPanel").hide(); }
+        });
+
+        jQuery.validator.methods["date"] = function (value, element) { return true; }
+
+        $('#datePicker').datepicker({
+            format: 'dd/mm/yyyy',
+            endDate: '-18y',
+            forceParse: false
+        }).on('changeDate', function (e) {
+            $('#datePicker').datepicker('hide');
+        });
+
+        if ($("#hiddenResultCount").val() > 0)
+            $("html, body").animate({ scrollTop: 900 }, 300);
+
+        $('#selectRole').change(function () {
+            if ($("#selectRole option:selected").val() === "Non Front Line") {
+                $("#selectLicenceSector option[value='']").prop('selected', true);
+                $("#selectLicenceSector").prop('disabled', true);
+            }
+            else
+                $("#selectLicenceSector").prop('disabled', false);
+        });
+
+        if ($("#selectRole option:selected").val() === "Non Front Line") {
+            $("#selectLicenceSector option[value='']").prop('selected', true);
+            $("#selectLicenceSector").prop('disabled', true);
+        }
+        else
+            $("#selectLicenceSector").prop('disabled', false);
+    });
+
+    function overlayHide() {
+        $(".Overlay").hide(); $(".PopUpPanel").hide();
+    }
+
+    $(document).ready(function () {
+        if (typeof (Storage) !== "undefined") {
+            var localStorage = window.localStorage;
+            var IsCookieConsentGivenForROLH = localStorage.getItem("IsCookieConsentGivenForROLH");
+
+            if (IsCookieConsentGivenForROLH && IsCookieConsentGivenForROLH == "true") {
+                document.getElementById("cookieBanner").style.display = "none";
+                document.getElementById("cookieBannerAcceptOrReject").style.display = "block";
+
+            }
+            else if (IsCookieConsentGivenForROLH && IsCookieConsentGivenForROLH == "false"){
+                document.getElementById("cookieBanner").style.display = "none";
+                document.getElementById("cookieBannerOnReject").style.display = "block";
+                document.getElementById("cookieBannerAcceptOrReject").style.display = "none";
+            }
+            else {
+                document.getElementById("cookieBanner").style.display = "block";
+                document.getElementById("cookieBannerAcceptOrReject").style.display = "none";
+            }
+
+        }
+        else {
+            alert('Sorry, your browser does not support web storage...');
+        }
+
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+    });
+
+    function AcceptCookies() {
+        localStorage.setItem("IsCookieConsentGivenForROLH", "true");
+        document.getElementById("cookieBanner").style.display = "none";
+        document.getElementById("cookieBannerOnReject").style.display = "none";
+        document.getElementById("cookieBannerAcceptOrReject").style.display = "block";
+    }
+
+    function RejectCookies() {
+        localStorage.setItem("IsCookieConsentGivenForROLH", "false");
+        document.getElementById("cookieBanner").style.display = "none";
+        document.getElementById("cookieBannerAcceptOrReject").style.display = "none";
+        document.getElementById("cookieBannerOnReject").style.display = "block";
+    }
+
+    function RejectAcceptedCookies() {
+        localStorage.setItem("IsCookieConsentGivenForROLH", "false");
+        document.getElementById("cookieBanner").style.display = "none";
+        document.getElementById("cookieBannerAcceptOrReject").style.display = "none";
+        document.getElementById("cookieBannerOnReject").style.display = "none";
+        document.getElementById("cookieBannerOnReject").style.display = "block";
+    }
+
+    function SeeMoreCookiesWeUseClick() {
+        var divAddressArea = document.getElementById("panelCookiesWeUseOverlay");
+        divAddressArea.style.cssText = "display:block;position: fixed; z-index: 1000 !important;margin-left: 40%";
+    }
+
+    function PopUpCloseCookiesWeUseClick() {
+        var divAddressArea = document.getElementById("panelCookiesWeUseOverlay");
+        divAddressArea.style.cssText = "display:none;";
+    }
+
+    function open_fun() {
+        document.getElementById('lnkToggleCollapse').innerHTML = "<a  class='accordion-toggle' style='font-size:small' data-toggle='collapse' onclick='close_fun()' data-parent='#accordion2' href='#collapsibleDiv'>Expand</a>";
+    }
+
+    function close_fun() {
+        document.getElementById('lnkToggleCollapse').innerHTML = "<a  class='accordion-toggle' style='font-size:small' data-toggle='collapse' onclick='open_fun()' data-parent='#accordion2'  href='#collapsibleDiv'>Collapse</a>";
+    }
+</script>

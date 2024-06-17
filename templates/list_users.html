@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}User Management{% endblock %}
+
+{% block content %}
+<h1 class="ui header">User Management</h1>
+<a href="/add_user" class="ui blue button">Add User</a>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>PIN</th>
+            <th>Role</th>
+            <th>SIA Number</th>
+            <th>SIA Expiry</th>
+            <th>Full Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>{{ user[3] }}</td>
+            <td>{{ user[4] }}</td>
+            <td>{{ user[5] }}</td>
+            <td>{{ user[6] }}</td>
+            <td>
+                <a href="/edit_user/{{ user[0] }}" class="ui blue button">Edit</a>
+                <a href="/delete_user/{{ user[0] }}" class="ui red button">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

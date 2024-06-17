@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+<h1 class="ui header">Add User</h1>
+<form class="ui form" action="/add_user" method="post">
+    <div class="field">
+        <label for="sia_number">SIA License Number</label>
+        <input type="text" id="sia_number" name="sia_number" class="ui input" required>
+    </div>
+    <div class="field">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" class="ui input" required>
+    </div>
+    <div class="field">
+        <label for="sia_expiry">SIA License Expiry Date</label>
+        <input type="text" id="sia_expiry" name="sia_expiry" class="ui input" required>
+    </div>
+    <div class="field">
+        <label for="sia_status">SIA License Status</label>
+        <input type="text" id="sia_status" name="sia_status" class="ui input" required>
+    </div>
+    <div class="field">
+        <label for="name">Username</label>
+        <input type="text" id="name" name="name" class="ui input" required>
+    </div>
+    <div class="field">
+        <label for="pin">PIN</label>
+        <input type="password" id="pin" name="pin" class="ui input" required>
+    </div>
+    <div class="field">
+        <label for="role">Role</label>
+        <select id="role" name="role" class="ui dropdown" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+    </div>
+    <button class="ui blue button" type="submit">Add User</button>
+</form>
+
+<script>
+document.getElementById('sia_number').addEventListener('blur', function() {
+    var licenseNo = this.value;
+    if (licenseNo) {
+        fetch('/scrape', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ licenseNo: licenseNo })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.valid) {
+                document.getElementById('full_name').value = data.firstName + ' ' + data.surname;
+                document.getElementById('sia_expiry').value = data.expiryDate;
+                document.getElementById('sia_status').value = data.status;
+            } else {
+                alert('Invalid SIA License number or unable to scrape data.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching SIA License data:', error);
+        });
+    }
+});
+</script>
+{% endblock %}

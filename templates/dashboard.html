@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block extra_head %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .dashboard-widget {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<h1 class="ui header">Dashboard</h1>
+<div class="dashboard-container">
+    <div class="dashboard-widget">
+        <h2>Total Events</h2>
+        <p>{{ total_events }}</p>
+    </div>
+    <div class="dashboard-widget">
+        <h2>Active Users</h2>
+        <p>{{ active_users }}</p>
+    </div>
+    <div class="dashboard-widget">
+        <h2>Events Over Time</h2>
+        <canvas id="eventDateChart"></canvas>
+    </div>
+    <div class="dashboard-widget">
+        <h2>Events by Category</h2>
+        <canvas id="eventCategoryChart"></canvas>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx1 = document.getElementById('eventCategoryChart').getContext('2d');
+        var eventCategoryChart = new Chart(ctx1, {
+            type: 'pie',
+            data: {
+                labels: {{ event_counts | map(attribute=0) | list | tojson }},
+                datasets: [{
+                    data: {{ event_counts | map(attribute=1) | list | tojson }},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('eventDateChart').getContext('2d');
+        var eventDateChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: {{ event_dates | map(attribute=0) | list | tojson }},
+                datasets: [{
+                    label: 'Events Over Time',
+                    data: {{ event_dates | map(attribute=1) | list | tojson }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.raw;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Events'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

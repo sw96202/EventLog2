@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Event Logging System{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        body.light-mode {
+            background-color: #f4f4f4;
+            color: #000;
+        }
+        body.dark-mode {
+            background-color: #2c2c2c;
+            color: #fff;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header .logo {
+            height: 50px;
+        }
+        .header .powered-by {
+            display: flex;
+            align-items: center;
+        }
+        .header .powered-by img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        .header .powered-by span {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .header .nav-button, .header .theme-toggle, .header .logout-button {
+            display: flex;
+            align-items: center;
+        }
+        .header .admin-button {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .header .selected-event {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="light-mode">
+    <div class="header">
+        <img src="/static/logo2.png" class="logo" alt="Logo">
+        <div class="powered-by">
+            <img src="/static/logo1.png" alt="Powered by Virtulum">
+            <span>Powered by Virtulum</span>
+        </div>
+        <div class="nav-button">
+            <a class="ui blue button" href="/dashboard">Dashboard</a>
+            <a class="ui blue button" href="/index">Event Log</a>
+            <a class="ui blue button" href="/users">User Management</a>
+            {% if session.get('role') == 'admin' %}
+                <a class="ui blue button admin-button" href="/admin">Admin</a>
+            {% endif %}
+            <a class="ui blue button admin-button" href="/select_event">Change Event</a>
+        </div>
+        <div class="theme-toggle">
+            <button id="theme-toggle" class="ui icon button">
+                <i class="sun icon"></i>
+            </button>
+        </div>
+        <div class="logout-button">
+            <form action="/logout" method="get">
+                <button class="ui red button" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+    <div class="ui container">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+        socket.on('new_event', function(data) {
+            alert(`New Event Logged: ${data.text}`);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            if (currentTheme === 'dark') {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="moon icon"></i>';
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeToggle.innerHTML = '<i class="sun icon"></i>';
+            }
+
+            themeToggle.addEventListener('click', function() {
+                if (body.classList.contains('light-mode')) {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    themeToggle.innerHTML = '<i class="moon icon"></i>';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    themeToggle.innerHTML = '<i class="sun icon"></i>';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
